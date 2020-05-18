@@ -5,6 +5,8 @@ dist: xenial
 addons:
   firefox: "47.0.1"
   postgresql: "9.4"
+  apt:
+    - openjdk-9-jre
 
 services: mysql
 
@@ -17,9 +19,6 @@ php:
   - 7.2
   - 7.3
   - 7.4
-
-jdk:
-  - openjdk9
 
 env:
   global:
@@ -38,8 +37,6 @@ env:
     - DB=mysqli MOODLE_BRANCH=master
 
 before_install:
-  - sudo update-alternatives --config java
-  - export JAVA_HOME=$HOME/openjdk9
   - java --version
   - phpenv config-rm xdebug.ini
   - nvm install v14
