@@ -6,8 +6,7 @@ addons:
   postgresql: "9.4"
   apt:
     packages:
-      - oracle-java9-installer
-      - oracle-java9-set-default
+      - openjdk-9-jre
 
 cache:
   directories:
