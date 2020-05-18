@@ -6,7 +6,7 @@ addons:
   firefox: "47.0.1"
   postgresql: "9.4"
   apt:
-    - openjdk-9-jre
+    - openjdk-8-jre
 
 services: mysql
 
@@ -38,8 +38,8 @@ env:
 
 before_install:
   - ls /usr/local/lib/jvm/
-  - export JAVA_HOME=$HOME/openjdk9
-  - install-jdk.sh -f 9 --target $JAVA_HOME
+  - export PATH=$(echo "$PATH" | sed -e 's/:\/usr\/local\/lib\/jvm\/openjdk11\/bin//')
+  #- JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64
   - pwd
   - update-alternatives --list java
   - ls /usr/lib/jvm/
