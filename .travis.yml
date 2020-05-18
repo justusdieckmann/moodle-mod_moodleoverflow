@@ -6,7 +6,7 @@ addons:
   firefox: "47.0.1"
   postgresql: "9.4"
   apt:
-    - openjdk-9-jre
+    - openjdk-9-jdk
 
 services: mysql
 
