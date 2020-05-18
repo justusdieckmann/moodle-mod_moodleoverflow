@@ -37,6 +37,7 @@ env:
     - DB=mysqli MOODLE_BRANCH=master
 
 before_install:
+  - ls /usr/local/lib/jvm/
   - export JAVA_HOME=$HOME/openjdk9
   - install-jdk.sh -f 9 --target $JAVA_HOME
   - pwd
