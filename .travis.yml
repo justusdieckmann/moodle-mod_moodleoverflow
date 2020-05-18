@@ -41,6 +41,7 @@ before_install:
   - update-alternatives --list java
   - ls /usr/lib/jvm/
   - echo $PATH
+  - install-jdk.sh
   - java --version
   - phpenv config-rm xdebug.ini
   - nvm install v14
