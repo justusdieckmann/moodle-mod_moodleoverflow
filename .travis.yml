@@ -37,15 +37,8 @@ env:
     - DB=mysqli MOODLE_BRANCH=master
 
 before_install:
-  - ls /usr/local/lib/jvm/
-  - export PATH=$(echo "$PATH" | sed -e 's/:\/usr\/local\/lib\/jvm\/openjdk11\/bin//')
   - JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64
-  - export PATH="${JAVA_HOME}/bin:$PATH"
-  - pwd
-  - update-alternatives --list java
-  - ls /usr/lib/jvm/
-  - echo $PATH
-  - java --version || true
+  - export PATH="${JAVA_HOME}/bin:$(echo "$PATH" | sed -e 's/:\/usr\/local\/lib\/jvm\/openjdk11\/bin//')"
   - phpenv config-rm xdebug.ini
   - nvm install v14
   - cd ../..
