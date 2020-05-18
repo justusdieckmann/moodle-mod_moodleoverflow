@@ -6,7 +6,7 @@ addons:
   firefox: "47.0.1"
   postgresql: "9.4"
   apt:
-    - openjdk-9-jdk
+    - openjdk-9-jre
 
 services: mysql
 
@@ -37,6 +37,8 @@ env:
     - DB=mysqli MOODLE_BRANCH=master
 
 before_install:
+  - pwd
+  - update-alternatives --list java
   - java --version
   - phpenv config-rm xdebug.ini
   - nvm install v14
