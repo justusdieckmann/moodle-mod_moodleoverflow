@@ -38,7 +38,7 @@ env:
 
 before_install:
   - export JAVA_HOME=$HOME/openjdk9
-  - install-jdk.sh --install openjdk9 --target $JAVA_HOME
+  - install-jdk.sh -f 9 --target $JAVA_HOME
   - pwd
   - update-alternatives --list java
   - ls /usr/lib/jvm/
