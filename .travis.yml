@@ -8,6 +8,9 @@ addons:
     packages:
       - openjdk-9-jre
 
+services:
+  - mysql
+
 cache:
   directories:
     - $HOME/.composer/cache
