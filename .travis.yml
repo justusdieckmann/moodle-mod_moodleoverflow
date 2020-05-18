@@ -3,10 +3,11 @@ os: linux
 dist: xenial
 
 addons:
-  firefox: "47.0.1"
   postgresql: "9.4"
 
-services: mysql
+services:
+  - mysql
+  - docker
 
 cache:
   directories:
@@ -22,6 +23,7 @@ env:
   global:
     - BEHAT=yes
     - MUSTACHE_IGNORE_NAMES="email_html_body.mustache, email_html.mustache, email_text.mustache"
+    - PROFILE=chrome
   jobs:
     - DB=pgsql MOODLE_BRANCH=MOODLE_35_STABLE
     - DB=pgsql MOODLE_BRANCH=MOODLE_37_STABLE
@@ -64,11 +66,6 @@ jobs:
     - stage: develop
       php: 7.4
       env: DB=mysqli MOODLE_BRANCH=master # TODO 39
-      install:
-        - moodle-plugin-ci install
-      script:
-        - moodle-plugin-ci phpunit --coverage-clover
-        - moodle-plugin-ci behat
   exclude:
     - php: 7.3
       env: DB=pgsql MOODLE_BRANCH=MOODLE_35_STABLE
@@ -86,6 +83,7 @@ jobs:
 # Default 'test' stage: Unit tests and behat tests against full matrix.
 install:
   - moodle-plugin-ci install
+  - docker run -d -p 127.0.0.1:4444:4444 --net=host -v /dev/shm:/dev/shm selenium/standalone-${PROFILE}:3
 script:
   - moodle-plugin-ci phpunit --coverage-clover
   - moodle-plugin-ci behat
