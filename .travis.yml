@@ -9,6 +9,8 @@ addons:
     packages:
       - oracle-java9-installer
       - oracle-java9-set-default
+      - php-gd
+      - php-zip
 
 cache:
   directories:
